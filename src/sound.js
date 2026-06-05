@@ -21,8 +21,10 @@ class SoundManager {
       const a = pool[src];
       a.volume = vol ?? this.sfxVolume;
       a.currentTime = 0;
-      a.play().catch(() => {});
-    } catch {}
+      a.play().catch(() => void 0);
+    } catch {
+      // Audio play failed or is not supported
+    }
   }
 
   beep(freq = 500, dur = 60) {
@@ -39,7 +41,9 @@ class SoundManager {
       gain.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + dur / 1000);
-    } catch {}
+    } catch {
+      // AudioContext failed or is not supported
+    }
   }
 }
 

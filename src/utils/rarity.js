@@ -6,7 +6,8 @@ export const RARITIES = [
 ];
 
 export function getRarity(price) {
-  return RARITIES.find(r => price <= r.max) || RARITIES[RARITIES.length - 1];
+  const p = Number(price) || 0;
+  return RARITIES.find(r => p <= r.max) || RARITIES[RARITIES.length - 1];
 }
 
 export function getFeatures(service) {

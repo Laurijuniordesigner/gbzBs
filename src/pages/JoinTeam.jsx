@@ -1,15 +1,34 @@
 import { useState } from 'react';
 import { Shield, CheckCircle, Clock, ChevronRight } from 'lucide-react';
 import { sound } from '../sound';
-import { SFX_WIN } from '../utils/constants';
+import { SFX_WIN, WHATSAPP_NUMBER } from '../utils/constants';
 
 export default function JoinTeam() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState('');
+
   const handleSubmit = e => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => { setSubmitting(false); setSubmitted(true); sound.play(SFX_WIN); }, 2000);
+
+    const formData = new FormData(e.target);
+    const nickname = formData.get('nickname');
+    const accountId = formData.get('accountId');
+    const whatsapp = formData.get('whatsapp');
+    const trophies = formData.get('trophies');
+    const reason = formData.get('reason');
+
+    const msg = `Olá Gabz, gostaria de me alistar para a equipe!\n\n• Nickname: ${nickname}\n• ID da Conta: ${accountId}\n• WhatsApp: ${whatsapp}\n• Troféus Totais: ${trophies}\n\nPor que mereço entrar:\n"${reason}"`;
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    setWhatsappUrl(url);
+
+    setTimeout(() => {
+      setSubmitting(false);
+      setSubmitted(true);
+      sound.play(SFX_WIN);
+      window.open(url, '_blank');
+    }, 1500);
   };
 
   if (submitted) {
@@ -17,11 +36,16 @@ export default function JoinTeam() {
       <div className="container">
         <div className="success-state">
           <CheckCircle size={72} color="var(--success)" className="success-icon" />
-          <h2>Inscrição enviada</h2>
+          <h2>Inscrição enviada!</h2>
           <p>
-            Você deu o primeiro passo para se tornar parte da elite. Vamos avaliar o seu perfil e entrar em contato em breve.
+            Sua inscrição foi gerada. Caso a janela de conversa do WhatsApp não tenha aberto automaticamente, clique no botão abaixo para nos enviar os seus dados.
           </p>
-          <button onClick={() => setSubmitted(false)}>Enviar outra inscrição</button>
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" style={{ display: 'block', width: '100%', marginBottom: 12 }}>
+            <button style={{ width: '100%', background: 'linear-gradient(180deg,#25D366 0%,#128C7E 100%)', boxShadow: '0 6px 0 #075E54' }}>
+              Conversar no WhatsApp
+            </button>
+          </a>
+          <button className="secondary" style={{ width: '100%' }} onClick={() => setSubmitted(false)}>Enviar outra inscrição</button>
         </div>
       </div>
     );
@@ -42,25 +66,25 @@ export default function JoinTeam() {
           <div className="form-grid">
             <div className="form-group">
               <label>NICKNAME NO JOGO</label>
-              <input required type="text" className="input-field" placeholder="Ex: ProPlayer123" />
+              <input required name="nickname" type="text" className="input-field" placeholder="Ex: ProPlayer123" />
             </div>
             <div className="form-group">
               <label>ID DA CONTA (#)</label>
-              <input required type="text" className="input-field" placeholder="Ex: #2YCPRQY" />
+              <input required name="accountId" type="text" className="input-field" placeholder="Ex: #2YCPRQY" />
             </div>
             <div className="form-group">
               <label>WHATSAPP</label>
-              <input required type="tel" className="input-field" placeholder="(11) 99999-9999" />
+              <input required name="whatsapp" type="tel" className="input-field" placeholder="(11) 99999-9999" />
             </div>
             <div className="form-group">
               <label>TROFÉUS TOTAIS</label>
-              <input required type="number" className="input-field" placeholder="Ex: 35000" />
+              <input required name="trophies" type="number" className="input-field" placeholder="Ex: 35000" />
             </div>
           </div>
 
           <div className="form-group" style={{ marginTop: 4 }}>
             <label>POR QUE VOCÊ MERECE ENTRAR NA EQUIPE?</label>
-            <textarea required className="input-field" rows="4" placeholder="Fale sobre suas habilidades, dedicação e o que você pode trazer para a equipe..." />
+            <textarea required name="reason" className="input-field" rows="4" placeholder="Fale sobre suas habilidades, dedicação e o que você pode trazer para a equipe..." />
           </div>
 
           <button type="submit" data-sound="none" style={{ width: '100%' }}>

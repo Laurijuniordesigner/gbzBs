@@ -50,10 +50,8 @@ export function useAppStore() {
       if (!parsed.pixKey || parsed.pixKey === 'gabz.bs.pagamentos@email.com') {
         parsed.pixKey = defaultData.pixKey;
       }
-      if (parsed.reviews.length > 0 && parsed.reviews[0].text && parsed.reviews[0].text.includes('1000%')) {
-        parsed.reviews = defaultData.reviews;
-      }
-      parsed.socials = parsed.socials.filter(s => s.name !== 'Twitch');
+      if (!Array.isArray(parsed.reviews)) parsed.reviews = defaultData.reviews;
+      if (!Array.isArray(parsed.socials)) parsed.socials = defaultData.socials;
       return parsed;
     }
     return defaultData;
@@ -76,7 +74,11 @@ export function useAppStore() {
   const updateService = (id, newService) => {
     setData(prev => ({
       ...prev,
-      services: prev.services.map(s => s.id === id ? newService : s)
+      services: prev.services.map(s => {
+        if (s.id !== id) return s;
+        const { oldPrice, ...rest } = newService;
+        return oldPrice !== undefined ? { ...rest, oldPrice } : rest;
+      })
     }));
   };
 
@@ -153,6 +155,15 @@ export function useAppStore() {
     setCart(prev => prev.filter(item => item.id !== id));
   };
 
+  const decrementCartItem = (id) => {
+    setCart(prev => {
+      const exists = prev.find(item => item.id === id);
+      if (!exists) return prev;
+      if (exists.quantity > 1) return prev.map(item => item.id === id ? { ...item, quantity: item.quantity - 1 } : item);
+      return prev.filter(item => item.id !== id);
+    });
+  };
+
   const clearCart = () => setCart([]);
 
   const updateAdminPassword = (newPass) => {
@@ -178,6 +189,7 @@ export function useAppStore() {
     deleteEvent,
     addToCart,
     removeFromCart,
+    decrementCartItem,
     clearCart,
     updateAdminPassword,
     importData

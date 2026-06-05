@@ -305,8 +305,12 @@ export default function Admin() {
               <input className="input-field" type="number" placeholder="Ex: 15" value={service.oldPrice || ''} onChange={e => updateService(service.id, { ...service, oldPrice: e.target.value === '' ? undefined : parseFloat(e.target.value) })} />
               <label>DESCRIÇÃO</label>
               <textarea className="input-field" rows="3" value={service.description} onChange={e => updateService(service.id, { ...service, description: e.target.value })} />
+              <label>SELO (BADGE) <span style={{ color: 'var(--text-dim)', fontWeight: 400, letterSpacing: 0 }}>— opcional, para destacar o item (Ex: 🔥 MAIS VENDIDO)</span></label>
+              <input className="input-field" placeholder="Ex: 🔥 MAIS VENDIDO" value={service.badge || ''} onChange={e => updateService(service.id, { ...service, badge: e.target.value || undefined })} />
+              <label>CARACTERÍSTICAS / VANTAGENS <span style={{ color: 'var(--text-dim)', fontWeight: 400, letterSpacing: 0 }}>— separadas por vírgula</span></label>
+              <input className="input-field" placeholder="Ex: Subida rápida, Conta segura, Suporte WhatsApp" value={(service.features || []).join(', ')} onChange={e => updateService(service.id, { ...service, features: e.target.value.split(',').map(f => f.trim()).filter(Boolean) })} />
               <button
-                style={{ background: 'rgba(255,51,51,0.1)', border: '1px solid rgba(255,51,51,0.3)', color: '#ff5555', padding: '9px 16px', boxShadow: 'none', borderRadius: 10, fontSize: '0.85rem', marginTop: 4 }}
+                style={{ background: 'rgba(255,51,51,0.1)', border: '1px solid rgba(255,51,51,0.3)', color: '#ff5555', padding: '9px 16px', boxShadow: 'none', borderRadius: 10, fontSize: '0.85rem', marginTop: 12 }}
                 onClick={() => deleteService(service.id)}
               >
                 <Trash2 size={14} style={{ verticalAlign: 'middle', marginRight: 6 }} />Remover Item

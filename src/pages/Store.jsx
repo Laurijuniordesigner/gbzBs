@@ -69,7 +69,7 @@ export default function Store() {
                 <p style={{ marginBottom: 16 }}>{service.description}</p>
 
                 <ul className="card-features">
-                  {(service.features || []).map((f, i) => (
+                  {getFeatures(service).map((f, i) => (
                     <li key={i}>
                       <Zap size={13} color="#ffd700" style={{ flexShrink: 0 }} />
                       {f}
@@ -87,11 +87,12 @@ export default function Store() {
                       ECONOMIZE R$ {(service.oldPrice - service.price).toFixed(2)}
                     </div>
                   )}
-                  <div className="price-pix">💰 10% OFF pagando via PIX</div>
+                  <div className="price-pix">💰 Pagamento via PIX</div>
                 </div>
 
                 <div className="card-actions">
                   <button
+                    data-sound="coin"
                     onClick={() => handleAdd(service)}
                     style={isAdded ? {
                       background: 'linear-gradient(180deg,#00e676 0%,#00a352 100%)',
