@@ -6,7 +6,7 @@ const defaultData = {
     { id: 2, name: 'Instagram', url: 'https://www.instagram.com/_gabz.bs_', icon: 'Instagram' },
     { id: 3, name: 'Twitter', url: 'https://twitter.com', icon: 'Twitter' },
     { id: 5, name: 'TikTok', url: 'https://www.tiktok.com/@_gabz.bs_0', icon: 'TikTok' },
-    { id: 6, name: 'Discord', url: 'https://discord.gg/WgYuUhGq', icon: 'Discord' }
+    { id: 6, name: 'Discord', url: 'https://discord.gg/UJgMz4kw7C', icon: 'Discord' }
   ],
   services: [
     { id: 1, title: 'Push de Troféus ( prestigio 1 )', price: 10, oldPrice: 15, description: 'Subo sua seu brawler para o prestigio 1  ( qualquer brawler ) obs : até 48 hrs depois', image: 'https://i.pinimg.com/736x/03/58/36/035836d3f8d007a90cd0a82f3920470e.jpg', features: ['Subida para prestígio 1', 'Qualquer brawler', 'Prazo de até 48h', 'Conta intacta e segura'], badge: '🔥 MAIS VENDIDO' },

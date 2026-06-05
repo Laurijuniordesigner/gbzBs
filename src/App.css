@@ -228,68 +228,40 @@
 .reviews-grid .review-card:nth-child(6) { animation-delay: 0.40s; }
 
 /* ──────────────── SHINE ON PRICE TAG ──────────────── */
-.price-tag {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  margin: 18px 0 16px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
+
 
 .price-old {
   font-family: 'Russo One', sans-serif;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.3);
   text-decoration: line-through;
-  text-decoration-color: rgba(255, 80, 80, 0.7);
+  text-decoration-color: rgba(255, 80, 80, 0.5);
   text-decoration-thickness: 2px;
   letter-spacing: 0.5px;
 }
 
 .price-current {
   font-family: 'Bungee', cursive;
-  font-size: 2.6rem;
+  font-size: 1.8rem;
   line-height: 1;
   background: linear-gradient(135deg, #ffe066 0%, #ff8c00 50%, #ffd700 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.45)) drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.85));
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.35)) drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.85));
   letter-spacing: 1px;
-  animation: pricePulse 2.4s ease-in-out infinite;
 }
 
 .price-save {
   display: inline-block;
   font-family: 'Russo One', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 1px;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
   color: #003d1f;
   background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
-  padding: 4px 10px;
-  border-radius: 6px;
-  box-shadow: 0 3px 10px rgba(0, 230, 118, 0.35);
-  margin-top: 2px;
-}
-
-.price-pix {
-  font-family: 'Russo One', sans-serif;
-  font-size: 0.72rem;
-  color: var(--primary);
-  letter-spacing: 0.5px;
-  margin-top: 6px;
-  opacity: 0.85;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-@keyframes pricePulse {
-  0%, 100% { filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.45)) drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.85)); }
-  50%      { filter: drop-shadow(0 0 22px rgba(255, 215, 0, 0.75)) drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.85)); }
+  padding: 3px 8px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 230, 118, 0.3);
 }
 
 /* ──────────────── BUTTON RIPPLE FX ──────────────── */

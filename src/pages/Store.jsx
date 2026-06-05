@@ -66,14 +66,11 @@ export default function Store() {
 
               <div className="card-body">
                 <h2>{service.title}</h2>
-                <p style={{ marginBottom: 16 }}>{service.description}</p>
+                <p style={{ marginBottom: 20 }}>{service.description}</p>
 
                 <ul className="card-features">
                   {getFeatures(service).map((f, i) => (
-                    <li key={i}>
-                      <Zap size={13} color="#ffd700" style={{ flexShrink: 0 }} />
-                      {f}
-                    </li>
+                    <li key={i}>{f}</li>
                   ))}
                 </ul>
 
@@ -83,11 +80,8 @@ export default function Store() {
                   )}
                   <div className="price-current">R$ {service.price.toFixed(2)}</div>
                   {service.oldPrice && service.oldPrice > service.price && (
-                    <div className="price-save">
-                      ECONOMIZE R$ {(service.oldPrice - service.price).toFixed(2)}
-                    </div>
+                    <div className="price-save">-{Math.round((1 - service.price / service.oldPrice) * 100)}%</div>
                   )}
-                  <div className="price-pix">💰 Pagamento via PIX</div>
                 </div>
 
                 <div className="card-actions">

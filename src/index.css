@@ -437,7 +437,7 @@ button.danger-btn {
 /* ──────────────── SECTION HEADERS ──────────────── */
 .section-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .section-header h2 {
@@ -677,7 +677,7 @@ button.danger-btn {
 .store-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 35px;
+  gap: 45px;
   align-items: stretch;
 }
 
@@ -730,7 +730,7 @@ button.danger-btn {
 }
 
 .card-image-wrap {
-  height: 230px;
+  height: 200px;
   overflow: hidden;
   position: relative;
 }
@@ -752,17 +752,17 @@ button.danger-btn {
 .card-badge {
   position: absolute;
   top: 16px;
-  right: -30px;
-  padding: 6px 50px;
+  right: 16px;
+  padding: 6px 16px;
   font-family: 'Russo One', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  transform: rotate(45deg);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  border-radius: 8px;
   z-index: 2;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
-.card-badge { color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 
 .card-badge.common { background: linear-gradient(135deg, #667eea, #764ba2) !important; }
 .card-badge.rare { background: linear-gradient(135deg, #00d0ff, #0060cc) !important; }
@@ -771,31 +771,19 @@ button.danger-btn {
 
 .promo-badge {
   position: absolute;
-  top: 14px;
-  left: -8px;
+  top: 16px;
+  left: 16px;
   z-index: 3;
   background: linear-gradient(135deg, #00e676 0%, #00c853 100%);
   color: #003d1f;
   font-family: 'Russo One', sans-serif;
   font-size: 0.78rem;
   letter-spacing: 1px;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
   box-shadow: 0 4px 14px rgba(0, 230, 118, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
   animation: promoPulse 1.8s ease-in-out infinite;
-}
-
-.promo-badge::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 5px 0 0 8px;
-  border-color: transparent transparent transparent #00571f;
 }
 
 @keyframes promoPulse {
@@ -804,7 +792,7 @@ button.danger-btn {
 }
 
 .card-body {
-  padding: 28px 30px 30px;
+  padding: 32px 34px 34px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -814,7 +802,7 @@ button.danger-btn {
   font-family: 'Russo One', sans-serif;
   font-size: 1.6rem;
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   line-height: 1.2;
   text-shadow: 0 0 20px rgba(0,208,255,0.3);
 }
@@ -823,20 +811,19 @@ button.danger-btn {
   color: rgba(170,190,220,0.9);
   font-size: 1rem;
   line-height: 1.65;
-  min-height: 80px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .price-tag {
-  font-family: 'Bungee', cursive;
-  font-size: 3rem;
-  background: linear-gradient(135deg, #ffe066, #ff8c00, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 12px rgba(255,215,0,0.4)) drop-shadow(2px 2px 0 rgba(0,0,0,0.8));
-  margin: 16px 0 18px;
-  letter-spacing: 1px;
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 4px 0 0;
+  padding: 18px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  width: 100%;
 }
 
 .card-body button {
@@ -1444,24 +1431,28 @@ select.input-field {
   margin: 0 0 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
   flex: 1;
 }
 
 .card-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
   font-size: 0.88rem;
   color: rgba(180,200,230,0.85);
-  line-height: 1.4;
+  line-height: 1.5;
+  padding: 2px 0;
+}
+.card-features li::before {
+  content: '▸';
+  color: var(--gold);
+  margin-right: 8px;
+  font-size: 0.7rem;
 }
 
 /* ──────────────── CARD ACTIONS (two-button row) ──────────────── */
 .card-actions {
   display: flex;
-  gap: 10px;
-  margin-top: 0;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 /* ──────────────── CART LAYOUT ──────────────── */
@@ -1488,7 +1479,7 @@ select.input-field {
 
 .cart-panel-header {
   font-family: 'Russo One', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   letter-spacing: 2px;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -1773,10 +1764,12 @@ select.input-field {
   .profile-pic { width: 130px; height: 130px; margin-top: -65px; }
   .profile-pic-ring::before { display: none; }
 
-  .store-grid { grid-template-columns: 1fr; gap: 24px; }
+  .store-grid { grid-template-columns: 1fr; gap: 28px; }
   .card-body { padding: 24px 22px; }
-  .card-image-wrap { height: 200px; }
-  .card-badge { padding: 4px 40px; font-size: 0.75rem; right: -35px; }
+  .card-image-wrap { height: 180px; }
+  .card-badge { padding: 5px 12px; font-size: 0.65rem; top: 10px; right: 10px; }
+  .card-body h2 { font-size: 1.2rem; }
+  .price-current { font-size: 1.5rem; }
 
   .join-container { padding: 35px 24px; }
   .cta-banner { padding: 40px 24px; border-radius: 24px; }
