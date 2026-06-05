@@ -5,13 +5,13 @@ const defaultData = {
     { id: 1, name: 'YouTube', url: 'https://www.youtube.com/@GabzBS', icon: 'YouTube' },
     { id: 2, name: 'Instagram', url: 'https://www.instagram.com/_gabz.bs_', icon: 'Instagram' },
     { id: 3, name: 'Twitter', url: 'https://twitter.com', icon: 'Twitter' },
-    { id: 5, name: 'TikTok', url: 'https://tiktok.com', icon: 'TikTok' },
+    { id: 5, name: 'TikTok', url: 'https://www.tiktok.com/@_gabz.bs_0', icon: 'TikTok' },
     { id: 6, name: 'Discord', url: 'https://discord.gg/WgYuUhGq', icon: 'Discord' }
   ],
   services: [
-    { id: 1, title: 'Push de Troféus ( prestigio 1 )', price: 10, description: 'Subo sua seu brawler para o prestigio 1  ( qualquer brawler ) obs : até 48 hrs depois', image: 'https://i.pinimg.com/736x/03/58/36/035836d3f8d007a90cd0a82f3920470e.jpg', features: ['Subida para prestígio 1', 'Qualquer brawler', 'Prazo de até 48h', 'Conta intacta e segura'], badge: '🔥 MAIS VENDIDO' },
+    { id: 1, title: 'Push de Troféus ( prestigio 1 )', price: 10, oldPrice: 15, description: 'Subo sua seu brawler para o prestigio 1  ( qualquer brawler ) obs : até 48 hrs depois', image: 'https://i.pinimg.com/736x/03/58/36/035836d3f8d007a90cd0a82f3920470e.jpg', features: ['Subida para prestígio 1', 'Qualquer brawler', 'Prazo de até 48h', 'Conta intacta e segura'], badge: '🔥 MAIS VENDIDO' },
     { id: 2, title: 'Coach 1v1 Premium', price: 20, description: '30minutos  de aula particular de Brawl Stars (Call no Discord). ', image: 'https://i.pinimg.com/736x/38/e2/bc/38e2bcb226638d1a7137231cc4d9318f.jpg', features: ['30 min de aula particular', 'Call no Discord', 'Identificação de erros', 'Dicas personalizadas'], badge: '🎯 PREMIUM' },
-    { id: 3, title: 'Análise de Gameplay', price: 8, description: 'Envie seu replay e eu analiso seus erros e acertos.', image: 'https://i.pinimg.com/736x/28/b0/2f/28b02f2e7e406ad21ac7b5925548bd47.jpg', features: ['Análise detalhada do replay', 'Relatório escrito', 'Erros e acertos apontados', 'Resposta em até 24h'], badge: '📊 OFERTA' },
+    { id: 3, title: 'Análise de Gameplay', price: 8, oldPrice: 12, description: 'Envie seu replay e eu analiso seus erros e acertos.', image: 'https://i.pinimg.com/736x/28/b0/2f/28b02f2e7e406ad21ac7b5925548bd47.jpg', features: ['Análise detalhada do replay', 'Relatório escrito', 'Erros e acertos apontados', 'Resposta em até 24h'], badge: '📊 OFERTA' },
     { id: 4, title: 'Push troféu  ( prestigio 2 )', price: 20, description: 'Subo seu brawler para prestigio 2   ( qualquer brawler que esteja prestigio 1 ) obs : até 48 hrs depois', image: 'https://i.pinimg.com/736x/79/1d/46/791d4665b37d3abcd95ab2184c3c483f.jpg', features: ['Subida para prestígio 2', 'Qualquer brawler (prestígio 1+)', 'Prazo de até 48h', 'Conta intacta e segura'], badge: '🔥 MAIS VENDIDO' }
   ],
   reviews: [

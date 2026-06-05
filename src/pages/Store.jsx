@@ -51,6 +51,12 @@ export default function Store() {
             >
               <div className="card-badge" style={{ background: bs.bg }}>{service.badge || 'OFERTA'}</div>
 
+              {service.oldPrice && service.oldPrice > service.price && (
+                <div className="promo-badge">
+                  -{Math.round((1 - service.price / service.oldPrice) * 100)}% OFF
+                </div>
+              )}
+
               {service.image && (
                 <div className="card-image-wrap">
                   <img src={service.image} alt={service.title} />
@@ -71,7 +77,18 @@ export default function Store() {
                   ))}
                 </ul>
 
-                <div className="price-tag">R$ {service.price.toFixed(2)}</div>
+                <div className="price-tag">
+                  {service.oldPrice && service.oldPrice > service.price && (
+                    <div className="price-old">R$ {service.oldPrice.toFixed(2)}</div>
+                  )}
+                  <div className="price-current">R$ {service.price.toFixed(2)}</div>
+                  {service.oldPrice && service.oldPrice > service.price && (
+                    <div className="price-save">
+                      ECONOMIZE R$ {(service.oldPrice - service.price).toFixed(2)}
+                    </div>
+                  )}
+                  <div className="price-pix">💰 10% OFF pagando via PIX</div>
+                </div>
 
                 <div className="card-actions">
                   <button
@@ -131,7 +148,19 @@ export default function Store() {
             </ul>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22, padding: '18px 20px', background: 'rgba(0,0,0,0.4)', borderRadius: 14, border: '1px solid rgba(255,255,255,0.06)' }}>
-              <span style={{ color: 'var(--text-dim)', fontFamily: 'Russo One', fontSize: '0.9rem' }}>VALOR TOTAL</span>
+              <div>
+                <div style={{ color: 'var(--text-dim)', fontFamily: 'Russo One', fontSize: '0.9rem' }}>VALOR TOTAL</div>
+                {selected.oldPrice && selected.oldPrice > selected.price && (
+                  <div style={{ color: 'var(--text-dim)', textDecoration: 'line-through', fontSize: '0.95rem', marginTop: 4 }}>
+                    De R$ {selected.oldPrice.toFixed(2)}
+                  </div>
+                )}
+                {selected.oldPrice && selected.oldPrice > selected.price && (
+                  <div style={{ color: 'var(--success)', fontFamily: 'Russo One', fontSize: '0.8rem', marginTop: 4, letterSpacing: 0.5 }}>
+                    💰 Economize R$ {(selected.oldPrice - selected.price).toFixed(2)}
+                  </div>
+                )}
+              </div>
               <span style={{ fontFamily: 'Bungee, cursive', fontSize: '2.2rem', background: 'linear-gradient(135deg,#ffe066,#ff8c00)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>R$ {selected.price.toFixed(2)}</span>
             </div>
 

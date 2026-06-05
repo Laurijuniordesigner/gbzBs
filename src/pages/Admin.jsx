@@ -301,6 +301,8 @@ export default function Admin() {
               <input className="input-field" placeholder="https://..." value={service.image || ''} onChange={e => updateService(service.id, { ...service, image: e.target.value })} />
               <label>PREÇO (R$)</label>
               <input className="input-field" type="number" value={service.price} onChange={e => updateService(service.id, { ...service, price: parseFloat(e.target.value) })} />
+              <label>PREÇO ANTIGO (R$) <span style={{ color: 'var(--text-dim)', fontWeight: 400, letterSpacing: 0 }}>— opcional, para mostrar desconto</span></label>
+              <input className="input-field" type="number" placeholder="Ex: 15" value={service.oldPrice || ''} onChange={e => updateService(service.id, { ...service, oldPrice: e.target.value === '' ? undefined : parseFloat(e.target.value) })} />
               <label>DESCRIÇÃO</label>
               <textarea className="input-field" rows="3" value={service.description} onChange={e => updateService(service.id, { ...service, description: e.target.value })} />
               <button
