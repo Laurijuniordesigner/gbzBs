@@ -1,0 +1,411 @@
+/* App.css — polimento adicional e animações avançadas */
+
+/* ──────────────── APP MAIN (sticky footer) ──────────────── */
+.app-main {
+  flex: 1;
+}
+
+/* ──────────────── STATS GRID ──────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 90px;
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 60px;
+  }
+  .stats-grid > div {
+    padding: 16px 12px !important;
+    border-radius: 14px !important;
+  }
+  .stats-grid > div > div:nth-child(2) {
+    font-size: 1.5rem !important;
+  }
+  .stats-grid > div > div:nth-child(3) {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ──────────────── GLOW PULSE em botões principais ──────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 6px 0 #7a3d00, 0 10px 25px rgba(255,140,0,0.4); }
+  50%       { box-shadow: 0 6px 0 #7a3d00, 0 10px 45px rgba(255,200,0,0.7), 0 0 60px rgba(255,180,0,0.25); }
+}
+
+/* ──────────────── LIVE BADGE ──────────────── */
+.live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255, 30, 30, 0.12);
+  border: 1px solid rgba(255, 30, 30, 0.45);
+  border-radius: 20px;
+  padding: 5px 14px 5px 10px;
+  font-family: 'Russo One', sans-serif;
+  font-size: 0.78rem;
+  color: #ff4444;
+  letter-spacing: 1.5px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff2222;
+  animation: livePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1);   box-shadow: 0 0 0   0   rgba(255,30,30,0.5); }
+  50%       { opacity: 1; transform: scale(1.3); box-shadow: 0 0 0 6px rgba(255,30,30,0);    }
+}
+
+/* ──────────────── GRADIENT TEXT UTILITY ──────────────── */
+.grad-text {
+  background: linear-gradient(135deg, #ffffff 0%, #00d0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-text-gold {
+  background: linear-gradient(135deg, #ffe066 0%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ──────────────── NEON BORDER ANIMATION ──────────────── */
+@keyframes neonBorder {
+  0%, 100% { border-color: rgba(0, 208, 255, 0.3); }
+  50%       { border-color: rgba(0, 208, 255, 0.8); box-shadow: 0 0 20px rgba(0,208,255,0.25); }
+}
+
+/* ──────────────── CARD SHINE SWEEP ──────────────── */
+@keyframes shineSweep {
+  0%   { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
+}
+
+.store-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+  transform: translateX(-100%) skewX(-20deg);
+  pointer-events: none;
+}
+
+.store-card:hover::after {
+  animation: shineSweep 0.8s ease forwards;
+}
+
+/* ──────────────── TOOLTIP ──────────────── */
+[data-tip] {
+  position: relative;
+}
+
+[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: rgba(0, 10, 40, 0.95);
+  border: 1px solid rgba(0,208,255,0.3);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+[data-tip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ──────────────── SCROLL BAR CUSTOM ──────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  background: #010510;
+}
+
+::-webkit-scrollbar-track {
+  background: #01040a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d0ff, #0050b3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #33ddff, #0077ff);
+}
+
+/* ──────────────── SELECTION COLOR ──────────────── */
+::selection {
+  background: rgba(0, 208, 255, 0.25);
+  color: #fff;
+}
+
+/* ──────────────── PAGE TRANSITION ──────────────── */
+.container {
+  animation: pageIn 0.45s ease both;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ──────────────── FOCUS VISIBLE ──────────────── */
+:focus-visible {
+  outline: 2px solid rgba(0, 208, 255, 0.6);
+  outline-offset: 3px;
+}
+
+/* ──────────────── PULSING NEON NAV LOGO ──────────────── */
+@keyframes logoGlow {
+  0%, 100% { text-shadow: 0 0 20px var(--primary), 0 0 40px rgba(0,208,255,0.4); }
+  50%       { text-shadow: 0 0 30px var(--primary), 0 0 70px rgba(0,208,255,0.7), 0 0 100px rgba(0,208,255,0.3); }
+}
+
+.nav-logo {
+  animation: logoGlow 3s ease-in-out infinite;
+}
+
+/* ──────────────── STORE CARD IMAGE TINT ON HOVER ──────────────── */
+.store-card.hot:hover .card-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,65,108,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.store-card.premium:hover .card-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(247,151,30,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.store-card.offer:hover .card-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(102,126,234,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ──────────────── INPUT LABEL ANIMATION ──────────────── */
+.form-group {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+/* ──────────────── REVIEW CARD — timed animations ──────────────── */
+.reviews-grid .review-card:nth-child(1) { animation-delay: 0.05s; }
+.reviews-grid .review-card:nth-child(2) { animation-delay: 0.12s; }
+.reviews-grid .review-card:nth-child(3) { animation-delay: 0.19s; }
+.reviews-grid .review-card:nth-child(4) { animation-delay: 0.26s; }
+.reviews-grid .review-card:nth-child(5) { animation-delay: 0.33s; }
+.reviews-grid .review-card:nth-child(6) { animation-delay: 0.40s; }
+
+/* ──────────────── SHINE ON PRICE TAG ──────────────── */
+.price-tag {
+  position: relative;
+  display: inline-block;
+}
+
+/* ──────────────── BUTTON RIPPLE FX ──────────────── */
+button:active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.15);
+  animation: ripple 0.4s ease forwards;
+}
+
+@keyframes ripple {
+  from { transform: scale(0); opacity: 1; }
+  to   { transform: scale(2); opacity: 0; }
+}
+
+/* ──────────────── FOOTER ──────────────── */
+.footer {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(0,8,30,0.6) 0%, rgba(0,3,12,0.98) 100%);
+  border-top: 2px solid rgba(0,208,255,0.15);
+  margin-top: auto;
+  padding: 60px 24px 30px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Bungee', cursive;
+  font-size: 1.4rem;
+  color: var(--primary);
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(0,208,255,0.4);
+}
+
+.footer-links {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links a {
+  font-family: 'Russo One', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6) !important;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease;
+}
+.footer-links a:hover { color: var(--primary) !important; }
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
+}
+.footer-socials a:hover {
+  background: rgba(0,208,255,0.1);
+  border-color: rgba(0,208,255,0.3);
+  transform: translateY(-4px);
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  width: 100%;
+}
+
+/* ──────────────── BACK TO TOP ──────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(0,60,180,0.8), rgba(0,20,80,0.9)) !important;
+  border: 2px solid rgba(0,208,255,0.4) !important;
+  color: var(--primary) !important;
+  padding: 0 !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 20px rgba(0,208,255,0.15) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.6), 0 0 30px rgba(0,208,255,0.3) !important;
+}
+
+/* ──────────────── TYPING CURSOR ──────────────── */
+.typing-cursor {
+  display: inline-block;
+  animation: blink 0.8s step-end infinite;
+  color: var(--primary);
+  font-weight: 100;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ──────────────── MUSIC TOGGLE ──────────────── */
+.music-toggle {
+  position: fixed;
+  bottom: 32px;
+  left: 28px;
+  z-index: 100;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(0,60,180,0.85), rgba(0,20,80,0.95)) !important;
+  border: 2px solid rgba(0,208,255,0.4) !important;
+  color: var(--primary) !important;
+  padding: 0 !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5), 0 0 20px rgba(0,208,255,0.15) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fabEntry 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both 1.2s;
+}
+.music-toggle:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.6), 0 0 30px rgba(0,208,255,0.3) !important;
+}
+
+@media (max-width: 768px) {
+  .back-to-top { bottom: 90px; right: 22px; width: 42px; height: 42px; }
+  .music-toggle { bottom: 22px; left: 22px; width: 42px; height: 42px; }
+  .footer { padding: 40px 20px 24px; }
+  .footer-links { gap: 18px; }
+  .footer-socials a { width: 38px; height: 38px; }
+  .footer-copy { font-size: 0.7rem; }
+}
